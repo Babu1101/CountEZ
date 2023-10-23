@@ -1,0 +1,9 @@
+CREATE TABLE users(
+	userID int not null AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(50) not null,
+	firstName VARCHAR(25) not null,
+	lastName VARCHAR(25) not null,
+	password VARCHAR(60) not null,
+	isActive boolean not null DEFAULT true,
+	isAdmin boolean not null DEFAULT false
+);
