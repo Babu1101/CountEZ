@@ -3,10 +3,12 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-const db = require("./db");
-
 app.use(cors());
 app.use(express.json());
+
+const usersRoutes = require('./routes/users/Users');
+
+app.use("/users", usersRoutes);
 
 app.get("/status", async (req, res) => {
 	console.log("Status Checked...");

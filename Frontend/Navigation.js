@@ -1,30 +1,77 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Stack Pages
+import AdminPage from './pages/adminpage/AdminPage.js';
+import WorkerPage from './pages/workerpage/WorkerPage.js';
+import ProfilePage from './pages/profilepage/ProfilePage.js';
 import LoginPage from './pages/loginpage/LoginPage.js';
-import HomePage from './pages/homepage/HomePage.js';
 
 const Stack = createStackNavigator();
 
-export const FinalStack = () => {
+const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="Admin"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <AdminPage {...props} userInfo={userInfo} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="Profile"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
+		</Stack.Navigator>
+	)
+}
+
+const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="Home"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <WorkerPage {...props} userInfo={userInfo} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="Profile"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
+		</Stack.Navigator>
+	)
+}
+
+const LoginStack = ({ onLoginStatusChange = () => {} }) => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
 				name="Login"
-				component={LoginPage}
 				options={{
 					headerTintColor: 'white',
 					headerStyle: { backgroundColor: 'blue' },
 				}}
-			/>
-			<Stack.Screen
-				name="Home"
-				component={HomePage}
-				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
-				}}
-			/>
+			>
+				{(props) => <LoginPage {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
 		</Stack.Navigator>
 	)
 }
+
+export { AdminStack, WorkerStack, LoginStack };
