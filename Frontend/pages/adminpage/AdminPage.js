@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 
-export default function AdminPage ({ navigation }) {
+export default function AdminPage ({ navigation, userInfo = {} }) {
     
 	return (
 		<View style={styles.container}>
-			Admin
+			<Text>Admin: Welcome {userInfo.firstname}!</Text>
+			<Button 
+				title='Profile'
+				onPress={() => navigation.navigate("Profile")}
+			/>
 		</View>
 	)
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { REACT_APP_API_URL } from "@env";
 
-export default async function SendLogin({ body }){
+export default async function SendLogin( body ){
 	const url = `${REACT_APP_API_URL}/users/login`;
 
 	const controller = new AbortController();
@@ -13,10 +13,7 @@ export default async function SendLogin({ body }){
 			signal: controller.signal,
 		});
 		
-		return {
-			status: response.data.status,
-			user: response.data.user
-		};
+		return response.data;
 		
 	} catch (error) {
 		console.log(error);

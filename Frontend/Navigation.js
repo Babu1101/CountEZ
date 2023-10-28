@@ -8,32 +8,43 @@ import LoginPage from './pages/loginpage/LoginPage.js';
 
 const Stack = createStackNavigator();
 
-const AdminStack = ({ onLoginStatusChange = () => {}}) => {
+const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
 				name="Admin"
-				component={AdminPage}
 				options={{
 					headerTintColor: 'white',
 					headerStyle: { backgroundColor: 'blue' },
 				}}
-			/>
+			>
+				{(props) => <AdminPage {...props} userInfo={userInfo} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="Profile"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
 		</Stack.Navigator>
 	)
 }
 
-const WorkerStack = ({ onLoginStatusChange = () => {}}) => {
+const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
 				name="Home"
-				component={WorkerPage}
 				options={{
 					headerTintColor: 'white',
 					headerStyle: { backgroundColor: 'blue' },
 				}}
-			/>
+			>
+				{(props) => <WorkerPage {...props} userInfo={userInfo} />}
+			</Stack.Screen>
 			<Stack.Screen
 				name="Profile"
 				options={{

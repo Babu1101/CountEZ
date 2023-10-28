@@ -28,10 +28,12 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 		onLoginStatusChange(response.status, response.user);
 		setLoading(false);
 
-		if (response.status == "none") {
-			setCurrentIssue("Invalid Credentials");
-		} else if (response.status == null) {
+		if (response.status == null) {
 			setCurrentIssue("Network Error - Try Again");
+		} else if (response.status == "invalid") {
+			setCurrentIssue("Invalid Credentials");
+		} else if (response.status == "inactive") {
+			setCurrentIssue("This User Is Currently Inactive");
 		}
 	}
 
