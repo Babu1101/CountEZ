@@ -46,6 +46,7 @@ const Login = ({ email, password }) => {
 			resolve({
 				status: status,
 				user: {
+					userId: data.userID,
 					firstname: data.firstName,
 					lastname: data.lastName,
 					email: data.email,
