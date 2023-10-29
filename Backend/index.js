@@ -7,8 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const usersRoutes = require('./routes/users/Users');
+const roundsRoutes = require('./routes/rounds/Rounds');
 
 app.use("/users", usersRoutes);
+app.use("/rounds", roundsRoutes);
 
 app.get("/status", async (req, res) => {
 	console.log("Status Checked...");
