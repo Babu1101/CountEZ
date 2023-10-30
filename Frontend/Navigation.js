@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 // Stack Pages
 import AdminPage from './pages/adminpage/AdminPage.js';
 import WorkerPage from './pages/workerpage/WorkerPage.js';
+import RoomsPage from './pages/workerpage/RoomsPage.js';
+import RoomDetail from './pages/workerpage/RoomDetail.js';
 import ProfilePage from './pages/profilepage/ProfilePage.js';
 import LoginPage from './pages/loginpage/LoginPage.js';
 
@@ -53,6 +55,24 @@ const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 				}}
 			>
 				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="Rooms"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <RoomsPage {...props} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="RoomDetail"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <RoomDetail {...props} />}
 			</Stack.Screen>
 		</Stack.Navigator>
 	)
