@@ -18,7 +18,7 @@ const App = () => {
 
 		setLoginStatus(status);
 		setUserInfo(user);
-	}
+	};
 
 	const checkLogin = async () => {
 		try {
@@ -28,7 +28,7 @@ const App = () => {
 			console.log(error);
 			return null;
 		}
-	}
+	};
 
 	const handleLoginStatusChange = async (status, user) => {
 		setLoginStatus(status);
@@ -39,7 +39,7 @@ const App = () => {
 		} catch (error) {
 			console.log(error);
 		}
-	}
+	};
 
   return (
     <>

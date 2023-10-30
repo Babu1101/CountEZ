@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, ActivityIndicator, KeyboardAvoidingView, Platform, Image } from 'react-native';
 
-import sendLogin from './functions/SendLogin.js';
+import SendLogin from './functions/SendLogin.js';
 
 export default function LoginPage({ navigation, onLoginStatusChange = () => { } }) {
 
@@ -24,7 +24,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 			password: password
 		}
 
-		const response = await sendLogin(body);
+		const response = await SendLogin(body);
 		onLoginStatusChange(response.status, response.user);
 		setLoading(false);
 
