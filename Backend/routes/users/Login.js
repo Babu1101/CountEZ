@@ -5,7 +5,7 @@ const cors = require('cors');
 router.use(cors());
 router.use(express.json());
 
-const Login = require("../../functions/Login.js");
+const Login = require("../../database/Login.js");
 
 router.post("/", async (req, res) => {
 	try {

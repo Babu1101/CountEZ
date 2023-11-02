@@ -2,6 +2,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Stack Pages
 import AdminPage from './pages/adminpage/AdminPage.js';
+import ExportPage from './pages/adminpage/ExportPage.js';
+
 import WorkerPage from './pages/workerpage/WorkerPage.js';
 import RoomsPage from './pages/workerpage/RoomsPage.js';
 import RoomDetail from './pages/workerpage/RoomDetail.js';
@@ -21,6 +23,15 @@ const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 				}}
 			>
 				{(props) => <AdminPage {...props} userInfo={userInfo} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="Export"
+				options={{
+					headerTintColor: 'white',
+					headerStyle: { backgroundColor: 'blue' },
+				}}
+			>
+				{(props) => <ExportPage {...props} />}
 			</Stack.Screen>
 			<Stack.Screen
 				name="Profile"

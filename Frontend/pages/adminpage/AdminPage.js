@@ -10,6 +10,10 @@ export default function AdminPage ({ navigation, userInfo = {} }) {
 				title='Profile'
 				onPress={() => navigation.navigate("Profile")}
 			/>
+			<Button 
+				title='Export Data'
+				onPress={() => navigation.navigate("Export")}
+			/>
 		</View>
 	)
 }
