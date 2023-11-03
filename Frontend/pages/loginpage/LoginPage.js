@@ -88,11 +88,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 				/>
 			</View>
 
-			<View style={styles.container}>
-				<Text>
-					Forgot Password?
-				</Text>
-			</View>
+			
 
 			<View style={styles.issueContainer}>
 				<Text style={styles.issue}>{currentIssue}</Text>
@@ -112,6 +108,13 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 					)
 				}
 			</View>
+
+			<View>
+				<Text>
+					Forgot Password?
+				</Text>
+			</View>
+			
 		</KeyboardAvoidingView>
 	)
 }
