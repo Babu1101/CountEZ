@@ -4,7 +4,7 @@ const GetTotal = () => {
 
 	return new Promise((resolve, reject) => {
 
-		db.query(`SELECT * FROM Rounds ORDER BY roundID DESC;`, async (error, rows, fields) => {
+		db.query(`SELECT * FROM Rounds ORDER BY roundID DESC LIMIT 1;`, async (error, rows, fields) => {
 			if (error) {
 				console.log(error);
 				reject({"message":"Error"});

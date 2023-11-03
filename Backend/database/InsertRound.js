@@ -25,7 +25,7 @@ const InsertRound = ({ userID, data, startTime, endTime, date }) => {
 				return;
 			}
 			
-			console.log('INSERTED NEW ROUND (USERID -', userID, ')');
+			console.log('INSERTED NEW ROUND ( USERID -', userID, ')');
 			resolve({"message":"Successfully Inserted New Round"});
 		});
 	});
