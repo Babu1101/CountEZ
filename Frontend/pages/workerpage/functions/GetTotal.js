@@ -17,6 +17,6 @@ export default async function GetTotal( ){
 		
 	} catch (error) {
 		console.log(error);
-		return error;
+		return -1;
 	}
 }
