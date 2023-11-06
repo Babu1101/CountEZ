@@ -1,21 +1,34 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function ProfilePage ({ navigation, onLoginStatusChange = () => {} }) {
-    
-	return (
-		<View style={styles.container}>
-			<Button 
-				title='Log out'
-				onPress={() => onLoginStatusChange(false, {})}
-			/>
-		</View>
-	)
+export default function LogoutButton({ onLoginStatusChange }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => onLoginStatusChange(false, {})}
+      >
+        <Text style={styles.buttonText}>Log out</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: 'white',
-	},
-})
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: '#AAC9CE', 
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#33539E',  
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

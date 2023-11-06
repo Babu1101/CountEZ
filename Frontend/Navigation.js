@@ -19,8 +19,8 @@ const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Admin"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <AdminPage {...props} userInfo={userInfo} />}
@@ -28,8 +28,8 @@ const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Export"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <ExportPage {...props} />}
@@ -46,8 +46,8 @@ const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Profile"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
@@ -62,8 +62,9 @@ const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Home"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					fontWeight: 'bold',
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <WorkerPage {...props} userInfo={userInfo} />}
@@ -71,8 +72,8 @@ const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Profile"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <ProfilePage {...props} onLoginStatusChange={onLoginStatusChange} />}
@@ -80,8 +81,8 @@ const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="Rooms"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <RoomsPage {...props} />}
@@ -89,8 +90,8 @@ const WorkerStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 			<Stack.Screen
 				name="RoomDetail"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <RoomDetail {...props} />}
@@ -105,8 +106,8 @@ const LoginStack = ({ onLoginStatusChange = () => {} }) => {
 			<Stack.Screen
 				name="Login"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <LoginPage {...props} onLoginStatusChange={onLoginStatusChange} />}

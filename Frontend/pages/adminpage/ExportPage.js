@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   descriptionContent: {
     fontSize: 18,
     textAlign: 'center',
-    color: '#333',
+    color: '#555',
   },
   emailContainer: {
     width: '80%',
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#33539E',
     borderWidth: 1,
     paddingHorizontal: 10,
     borderRadius: 5,
@@ -177,13 +177,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   submitButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#AAC9CE',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
   },
   submitText: {
-    color: 'white',
-    fontSize: 18,
+    color: '#33539E',
+    fontSize: 16,
+	fontWeight: 'bold',
   },
 });
