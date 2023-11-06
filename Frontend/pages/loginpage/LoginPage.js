@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight, ActivityIndicator, KeyboardAvoidingView, Platform, Image } from 'react-native';
+import { StyleSheet, Button, View, Text, TextInput, TouchableHighlight, ActivityIndicator, KeyboardAvoidingView, Platform, Image } from 'react-native';
 
 import SendLogin from './functions/SendLogin.js';
 
 export default function LoginPage({ navigation, onLoginStatusChange = () => { } }) {
 
-	const [ email, setEmail ] = useState("");
-	const [ password, setPassword ] = useState("");
-	const [ currentIssue, setCurrentIssue ] = useState("");
-	const [ loading, setLoading ] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [currentIssue, setCurrentIssue] = useState("");
+	const [loading, setLoading] = useState("");
 
 	const handleLogin = async () => {
 		if (!verifyInput()) {
@@ -57,7 +57,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 	}
 
 	return (
-		<KeyboardAvoidingView 
+		<KeyboardAvoidingView
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 			style={styles.container}
 		>
@@ -68,7 +68,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 					style={styles.logo}
 				/>
 			</View> */}
-			
+
 			<View style={styles.emailContainer}>
 				<TextInput
 					style={styles.input}
@@ -88,7 +88,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 				/>
 			</View>
 
-			
+
 
 			<View style={styles.issueContainer}>
 				<Text style={styles.issue}>{currentIssue}</Text>
@@ -97,7 +97,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 			<View style={styles.submitContainer}>
 				{loading ?
 					(
-						<ActivityIndicator size="large" color="blue"/>
+						<ActivityIndicator size="large" color="blue" />
 					) : (
 						<TouchableHighlight
 							style={styles.submitButton}
@@ -111,21 +111,29 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 
 			<View>
 				<Text>
-					Forgot Password?
+					
 				</Text>
+				<Button
+					title='Forgot Password?'
+					onPress={this.goToForgotPassword}
+					titleStyle={{
+						color: '#039BE5'
+					}}
+					type='clear'
+				/>
 			</View>
-			
+
 		</KeyboardAvoidingView>
 	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 	logoContainer: {
 		width: '80%',
 		height: '20%',
@@ -137,38 +145,38 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 	},
-  emailContainer: {
-    width: '80%',
-  },
-  passwordContainer: {
-    width: '80%',
-    marginTop: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
-  },
-  issueContainer: {
-    marginTop: 10,
-  },
-  issue: {
-    color: 'red',
-  },
-  submitContainer: {
-    marginTop: 20,
-  },
-  submitButton: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
+	emailContainer: {
+		width: '80%',
+	},
+	passwordContainer: {
+		width: '80%',
+		marginTop: 10,
+	},
+	input: {
+		borderWidth: 1,
+		borderColor: 'gray',
+		borderRadius: 5,
+		padding: 10,
+		marginBottom: 10,
+	},
+	issueContainer: {
+		marginTop: 10,
+	},
+	issue: {
+		color: 'red',
+	},
+	submitContainer: {
+		marginTop: 20,
+	},
+	submitButton: {
+		backgroundColor: 'blue',
+		padding: 10,
+		borderRadius: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
 		width: 200
-  },
-  submitText: {
-    color: 'white',
-  },
+	},
+	submitText: {
+		color: 'white',
+	},
 });
