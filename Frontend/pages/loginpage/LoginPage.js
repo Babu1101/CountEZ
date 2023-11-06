@@ -116,6 +116,7 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 				<Button
 					title='Forgot Password'
 					onPress={this.goToForgotPassword}
+					color = '#33539E'
 					titleStyle={{
 						color: '#039BE5'
 					}}
