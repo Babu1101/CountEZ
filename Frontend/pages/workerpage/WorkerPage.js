@@ -6,7 +6,7 @@ import GetTotal from './functions/GetTotal';
 export default function WorkerPage({ navigation, userInfo = {} }) {
 
 	const [totalCount, setTotalCount] = useState(0);
-
+	const Separator = () => <View style={styles.separator} />;
 	useEffect(() => {
 		init();
 	}), [];
@@ -22,22 +22,32 @@ export default function WorkerPage({ navigation, userInfo = {} }) {
 
 	return (
 		<KeyboardAvoidingView>
-			<View style={styles.baseText}>
-				<Text> Welcome {userInfo.firstname}!</Text>
+			<View style={styles}>
+				<Text style={styles.baseText}> Welcome {userInfo.firstname}!</Text>
 			</View>
 
-			<View style={[{ width: 100, margin: 10 }]}>
+			<View style={[{ alignItems:'center'}]}>
 
 				<Button
 					title='Profile'
 					onPress={() => navigation.navigate("Profile")}
 					
-
 				/>
-
-				<Text>Total Count: {totalCount}</Text>
+			</View>
+			<Separator />
+			<View>
+				<Text>
+					
+				
+				</Text>
+				
+				<Text style={styles.baseText}>Total Count: {totalCount}</Text>
+				</View>
+				<View style={[{ alignItems:'center'}]}>
+				
 				<Button
 					title='Start Round'
+					style={styles.button}
 					onPress={() => navigation.navigate("Rooms", {
 						userInfo: userInfo
 					})}
@@ -51,6 +61,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: 'white',
+		justifyContent: 'center',
+    marginHorizontal: 16,
 	},
 	button: {
 		alignItems: 'left',
@@ -62,7 +74,18 @@ const styles = StyleSheet.create({
 		backgroundColor: 'black',
 	},
 	baseText: {
-		fontFamily: 'Cochin',
-		fontSize:40,
+		fontSize:30,
+		marginVertical: 8,
+		textAlign: 'center',
+	  },
+	  button: {
+		alignItems: "center",
+		backgroundColor: "#DDDDDD",
+		padding: 10
+	  },
+	  separator: {
+		marginVertical: 8,
+		borderBottomColor: '#737373',
+		borderBottomWidth: StyleSheet.hairlineWidth,
 	  },
 })
