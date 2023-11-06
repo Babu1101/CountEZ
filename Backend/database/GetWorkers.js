@@ -14,9 +14,9 @@ const GetWorkers = () => {
 			const cleanedRows = rows.map((row) => {
 				return {
 					userID: row.userID,
-					emaiL: row.email,
-					firstname: row.firstName,
-					lastname: row.lastName,
+					email: row.email,
+					firstName: row.firstName,
+					lastName: row.lastName,
 				}
 			});
 			
