@@ -22,15 +22,16 @@ export default function WorkerPage({ navigation, userInfo = {} }) {
 
 	return (
 		<KeyboardAvoidingView>
-			<View style={styles}>
+			<View style={styles.baseText}>
 				<Text> Welcome {userInfo.firstname}!</Text>
 			</View>
+
 			<View style={[{ width: 100, margin: 10 }]}>
 
 				<Button
 					title='Profile'
 					onPress={() => navigation.navigate("Profile")}
-					color="#FF3D00"
+					
 
 				/>
 
@@ -60,4 +61,8 @@ const styles = StyleSheet.create({
 		elevation: 3,
 		backgroundColor: 'black',
 	},
+	baseText: {
+		fontFamily: 'Cochin',
+		fontSize:40,
+	  },
 })
