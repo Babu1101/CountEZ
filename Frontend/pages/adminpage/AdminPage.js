@@ -1,90 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-import Worker from './components/Worker.js';
-import GetWorkers from './functions/GetWorkers.js';
+export default function AdminPage ({ navigation, userInfo = {} }) {
 
-export default function AdminPage({ navigation, userInfo = {} }) {
-  const [workers, setWorkers] = useState([]);
+	return(
+	<View style={styles.container}>
 
-  useEffect(() => {
-    init();
-  }, []);
+		<Text style={styles.title}>Admin: Welcome {userInfo.firstname}!</Text>
 
-  const init = async () => {
-    const response = await GetWorkers();
+		<TouchableOpacity
+			style={styles.button}
+			onPress={() => navigation.navigate("Profile")}
+		>
+			<Text style={styles.buttonText}>Profile</Text>
+		</TouchableOpacity>
 
-    if (response.status == null) {
-      
-    } else {
-      setWorkers(response.data);
-    }
-  }
+		<TouchableOpacity
+			style={styles.button}
+			onPress={() => navigation.navigate("Workers")}
+		>
+			<Text style={styles.buttonText}>View Workers</Text>
+		</TouchableOpacity>
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Hello, {userInfo.firstname}</Text>
-        <Button
-          title='Profile'
-          onPress={() => navigation.navigate("Profile")}
-        />
-      </View>
+		<TouchableOpacity
+			style={styles.button}
+			onPress={() => navigation.navigate("Export")}
+		>
+			<Text style={styles.buttonText}>Export Data</Text>
+		</TouchableOpacity>
 
-      <View style={styles.workersContainer}>
-				<Text style={styles.workersHeader}>All AFSC Student Workers</Text>
-				<ScrollView style={styles.workersScrollContainer}>
-					{workers.map((worker) => {
-						return <Worker key={worker.userID} data={worker} />
-					})}
-				</ScrollView>
-			</View>
-
-      <View style={styles.newWorkerButtonContainer}>
-				<Button
-          title='Export Data'
-          onPress={() => navigation.navigate("Export")}
-        />
-        <Button
-          title='New Worker'
-          onPress={() => navigation.navigate("NewWorker")}
-        />
-      </View>
-    </View>
-  );
+  </View>
+);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16, 
-  },
-	headerText: {
-		alignSelf: 'center',
-	},
-	workersContainer: {
+	container: {
 		flex: 1,
-    backgroundColor: 'white',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#f0f0f0',
 	},
-  workersHeader: {
-    fontSize: 24, 
-    fontWeight: 'bold',
-    marginBottom: 20, 
-		alignSelf: 'center',
-  },
-  workersScrollContainer: {
-    flex: 1,
-    width: '100%',
-  },
-  newWorkerButtonContainer: {
-		flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-  },
+	title: {
+		fontSize: 20,
+		marginBottom: 20,
+	},
+	button: {
+		backgroundColor: '#AAC9CE',
+		padding: 10,
+		borderRadius: 5, 
+		marginVertical: 10,
+	},
+	buttonText: {
+		color: '#33539E', 
+		fontSize: 16,
+		fontWeight: 'bold',
+		textAlign: 'center',
+	},
 });

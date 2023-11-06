@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 
 export default function NewWorkerPage({ navigation }) {
   const [ firstName, setFirstName ] = useState('');
@@ -47,8 +47,18 @@ export default function NewWorkerPage({ navigation }) {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button title="Cancel" onPress={handleCancel} />
-        <Button title="Create" onPress={handleCreate} />
+				<TouchableOpacity
+					style={styles.button}
+					onPress={handleCancel}
+				>
+					<Text style={styles.buttonText}>Cancel</Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					style={styles.button}
+					onPress={handleCreate}
+				>
+					<Text style={styles.buttonText}>Create</Text>
+				</TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
@@ -88,4 +98,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+	button: {
+		backgroundColor: '#AAC9CE',
+		padding: 10,
+		borderRadius: 5, 
+		marginVertical: 10,
+	},
+	buttonText: {
+		color: '#33539E', 
+		fontSize: 16,
+		fontWeight: 'bold',
+		textAlign: 'center',
+	},
 });

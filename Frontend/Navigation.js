@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AdminPage from './pages/adminpage/AdminPage.js';
 import ExportPage from './pages/adminpage/ExportPage.js';
 import NewWorkerPage from './pages/adminpage/NewWorkerPage.js';
+import ViewWorkersPage from './pages/adminpage/ViewWorkersPage.js';
 
 import WorkerPage from './pages/workerpage/WorkerPage.js';
 import RoomsPage from './pages/workerpage/RoomsPage.js';
@@ -35,10 +36,19 @@ const AdminStack = ({ userInfo = {}, onLoginStatusChange = () => {}}) => {
 				{(props) => <ExportPage {...props} />}
 			</Stack.Screen>
 			<Stack.Screen
-				name="NewWorker"
+				name="Workers"
 				options={{
-					headerTintColor: 'white',
-					headerStyle: { backgroundColor: 'blue' },
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
+				}}
+			>
+				{(props) => <ViewWorkersPage {...props} />}
+			</Stack.Screen>
+			<Stack.Screen
+				name="New Worker"
+				options={{
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
 				}}
 			>
 				{(props) => <NewWorkerPage {...props} />}
