@@ -145,38 +145,38 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 	},
-	emailContainer: {
-		width: '80%',
-	},
-	passwordContainer: {
-		width: '80%',
-		marginTop: 10,
-	},
-	input: {
-		borderWidth: 1,
-		borderColor: 'gray',
-		borderRadius: 5,
-		padding: 10,
-		marginBottom: 10,
-	},
-	issueContainer: {
-		marginTop: 10,
-	},
-	issue: {
-		color: 'red',
-	},
-	submitContainer: {
-		marginTop: 20,
-	},
-	submitButton: {
-		backgroundColor: 'blue',
-		padding: 10,
-		borderRadius: 5,
-		alignItems: 'center',
-		justifyContent: 'center',
+  emailContainer: {
+    width: '80%',
+  },
+  passwordContainer: {
+    width: '80%',
+    marginTop: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#33539E',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  issueContainer: {
+    marginTop: 10,
+  },
+  issue: {
+    color: 'red',
+  },
+  submitContainer: {
+    marginTop: 20,
+  },
+  submitButton: {
+    backgroundColor: '#AAC9CE',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
 		width: 200
-	},
-	submitText: {
-		color: 'white',
-	},
+  },
+  submitText: {
+    color: '#33539E',
+  },
 });
