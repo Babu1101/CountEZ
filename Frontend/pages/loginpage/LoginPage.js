@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#33539E',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   submitButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#AAC9CE',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -160,6 +160,6 @@ const styles = StyleSheet.create({
 		width: 200
   },
   submitText: {
-    color: 'white',
+    color: '#33539E',
   },
 });
