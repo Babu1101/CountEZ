@@ -122,10 +122,13 @@ export default function RoomsPage ({ navigation, route }) {
           </TouchableOpacity>
         )}
       />
-			<Button 
-				title="Finish"
-				onPress={handleSubmit}
-			/>
+			<TouchableOpacity
+  			style={styles.button}
+  			onPress={handleSubmit}
+			>
+  			<Text style={styles.buttonText}>Finish</Text>
+			</TouchableOpacity>
+
 		</View>
 	)
 }
@@ -138,6 +141,16 @@ const styles = StyleSheet.create({
   roomItem: {
     padding: 16,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#AAC9CE',
+  },
+  button: {
+    backgroundColor: '#AAC9CE', 
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#33539E', 
+	fontWeight: 'bold',
   },
 });
