@@ -116,9 +116,16 @@ export default function RoomsPage ({ navigation, route }) {
             }
             style={styles.roomItem}
           >
-            <Text>
+            {/*<Text>
               {item.name} - {item.peopleCount} People
-            </Text>
+		</Text>*/}
+
+		
+        <View style={{flexDirection:'row'}}>
+          <Text style={[styles.textStyle]}> {item.name}</Text>
+          <Text style={[styles.textStyle,{textAlign:'right'}]}>{item.peopleCount} People</Text>
+        </View>
+		
           </TouchableOpacity>
         )}
       />
@@ -153,4 +160,14 @@ const styles = StyleSheet.create({
     color: '#33539E', 
 	fontWeight: 'bold',
   },
+  cntnr: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textStyle:{
+    color:'black', 
+    flex:1
+  }
 });
