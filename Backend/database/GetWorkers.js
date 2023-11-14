@@ -17,6 +17,7 @@ const GetWorkers = () => {
 					email: row.email,
 					firstName: row.firstName,
 					lastName: row.lastName,
+					isActive: row.isActive
 				}
 			});
 			

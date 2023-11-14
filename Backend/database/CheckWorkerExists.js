@@ -12,7 +12,7 @@ const CheckWorkerExists = ({ email }) => {
 			}
 
 			if(rows.length != 0){
-				console.log("");
+				console.log("CREATING NEW USER THAT ALREADY EXISTS");
 				reject({"message":"This email is already in use."});
 				return;
 			}
