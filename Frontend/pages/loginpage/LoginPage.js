@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View, Text, TextInput, TouchableHighlight, ActivityIndicator, KeyboardAvoidingView, Platform, Image } from 'react-native';
 
-import SendLogin from './functions/SendLogin.js';
 
-export default function LoginPage({ navigation, onLoginStatusChange = () => { } }) {
+import SendLogin from './functions/SendLogin.js';
+import ForgotPassword from '../../PasswordForgot.js';
+
+export default function LoginPage({navigation, onLoginStatusChange = () => { } }) {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [currentIssue, setCurrentIssue] = useState("");
 	const [loading, setLoading] = useState("");
+
+	
+
+
 
 	const handleLogin = async () => {
 		if (!verifyInput()) {
@@ -55,6 +61,8 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 
 		return true;
 	}
+
+	
 
 	return (
 		<KeyboardAvoidingView
@@ -114,14 +122,12 @@ export default function LoginPage({ navigation, onLoginStatusChange = () => { } 
 					
 				</Text>
 				<Button
-					title='Forgot Password'
-					onPress={this.goToForgotPassword}
+					onPress={() => navigation.navigate('ForgotPassword')}
 					color = '#33539E'
-					titleStyle={{
-						color: '#039BE5'
-					}}
-					type='clear'
+					title = 'Forgot Password'
 				/>
+				
+				
 			</View>
 
 		</KeyboardAvoidingView>
