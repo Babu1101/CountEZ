@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function LogoutButton({ onLoginStatusChange }) {
   return (
+    
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}

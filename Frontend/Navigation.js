@@ -11,6 +11,7 @@ import RoomsPage from './pages/workerpage/RoomsPage.js';
 import RoomDetail from './pages/workerpage/RoomDetail.js';
 import ProfilePage from './pages/profilepage/ProfilePage.js';
 import LoginPage from './pages/loginpage/LoginPage.js';
+import ForgotPassword from './pages/loginpage/PasswordForgot.js';
 
 const Stack = createStackNavigator();
 
@@ -122,9 +123,20 @@ const LoginStack = ({ onLoginStatusChange = () => {} }) => {
 			>
 				{(props) => <LoginPage {...props} onLoginStatusChange={onLoginStatusChange} />}
 			</Stack.Screen>
+			<Stack.Screen
+				name="ForgotPassword"
+				options={{
+					headerTintColor: '#33539E',
+					headerStyle: { backgroundColor: '#AAC9CE' },
+				}}
+			>
+				{(props) => <ForgotPassword {...props} onLoginStatusChange={onLoginStatusChange} />}
+			</Stack.Screen>
 		</Stack.Navigator>
 	)
 }
 
 
-export { AdminStack, WorkerStack, LoginStack };
+
+
+export { AdminStack, WorkerStack, LoginStack};
