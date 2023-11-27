@@ -1,9 +1,56 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 
-export default function Worker({ data }) {
+import DeleteWorker from '../functions/DeleteWorker';
+
+export default function Worker({ data, handleDeleteWorker = () => {} }) {
+
+	const [ activeColor, setActiveColor ] = useState("");
+
+	useEffect(() => {
+		init();
+	});
+
+	const init = () => {
+		setActiveColor(data.isActive ? 'lightgreen': 'lightgray');
+	};
+
+	const handleDelete = () => {
+		const body = {
+			userID: data.userID
+		}
+
+		Alert.alert(
+			"Delete Worker?",
+			"This action cannot be undone.",
+			[
+				{ text: "No", style: 'default', onPress: () => {} },
+				{ text: "Yes", style:'destructive', onPress: async () => {
+					const response = await DeleteWorker(body);
+
+					if(response.status === 200) {
+						handleDeleteWorker(data.userID);
+					} else {
+						Alert.alert(
+							"An Error Occurred",
+							"There was an error deleting this worker.",
+							[
+								{ text: "Try Again", style:"default", onPress: () => {} }
+							]
+						)
+					}
+				}}
+			]
+		);
+	}
+
+
   return (
     <View style={styles.workerContainer}>
+			<View style={styles.isActiveContainer}>
+				
+				<View style={[styles.isActiveIcon, {backgroundColor: activeColor }]}/>
+			</View>
       <View style={styles.leftContainer}>
         <Text style={styles.name}>{data.firstName} {data.lastName}</Text>
         <Text style={styles.email}>{data.email}</Text>
@@ -15,8 +62,8 @@ export default function Worker({ data }) {
             onPress={() => {} }
           />
           <Button
-            title="Remove"
-            onPress={() => {} }
+            title="Delete"
+            onPress={handleDelete}
           />
         </View>
       </View>
@@ -39,6 +86,12 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     flexDirection: 'column',
+  },
+	isActiveIcon: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    marginRight: 8,
   },
   name: {
     fontSize: 16,

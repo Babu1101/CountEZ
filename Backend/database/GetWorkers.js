@@ -4,7 +4,7 @@ const GetWorkers = () => {
 
 	return new Promise((resolve, reject) => {
 
-		db.query(`SELECT * FROM Users WHERE isActive=1 AND isAdmin=0;`, async (error, rows, fields) => {
+		db.query(`SELECT * FROM Users WHERE isAdmin=0;`, async (error, rows, fields) => {
 			if (error) {
 				console.log(error);
 				reject({"message":"Error"});
@@ -17,6 +17,7 @@ const GetWorkers = () => {
 					email: row.email,
 					firstName: row.firstName,
 					lastName: row.lastName,
+					isActive: row.isActive
 				}
 			});
 			
