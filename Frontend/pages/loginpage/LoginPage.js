@@ -3,7 +3,6 @@ import { StyleSheet, Button, View, Text, TextInput, TouchableHighlight, Activity
 
 
 import SendLogin from './functions/SendLogin.js';
-import ForgotPassword from '../../PasswordForgot.js';
 
 export default function LoginPage({navigation, onLoginStatusChange = () => { } }) {
 

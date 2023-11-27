@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View, Text, TextInput, TouchableHighlight, ActivityIndicator, KeyboardAvoidingView, Platform, Image } from 'react-native';
+import SendForgotPassword from './functions/SendForgotPassword';
 
-
-
-export default function ForgotPassword({ navigation, onLoginStatusChange = () => { } }) {
+export default function ForgotPassword({ navigation}) {
 
 
     const [currentIssue,setCurrentIssue] = useState("");
@@ -12,31 +11,33 @@ export default function ForgotPassword({ navigation, onLoginStatusChange = () =>
     
     const[loading, setLoading] = useState("");
 
-	const handleLogin = async () => {
-		if (!verifyInput()) {
+
+  const handleResetPassword = async () => {
+
+
+    if (!verifyInput()) {
 			console.log(currentIssue);
 			return;
 		}
+    setLoading(true);
+    setCurrentIssue("");
 
-		setCurrentIssue("");
-		setLoading(true);
-
-		const body = {
-			email: email
-		}
-
-		const response = await SendLogin(body);
-		onLoginStatusChange(response.status, response.user);
-		setLoading(false);
-
-		if (response.status == null) {
-			setCurrentIssue("Network Error - Try Again");
-		} else if (response.status == "invalid") {
-			setCurrentIssue("Invalid Credentials");
-		} else if (response.status == "inactive") {
-			setCurrentIssue("This User Is Currently Inactive");
-		}
-	}
+    
+      const data = {
+        email: email,
+      };
+      
+      const response = await SendForgotPassword(data);
+      setLoading(false);
+      if (response.status == null) {
+        setCurrentIssue("Network Error - Try Again");
+      } else if (response.status == "invalid") {
+        setCurrentIssue("This user's email doesn't exist");
+      } else if (response.status == "inactive") {
+        setCurrentIssue("This User Is Currently Inactive");
+      }
+      
+  }
 
 	const verifyInput = () => {
 		if (email.length < 1) {
@@ -82,7 +83,7 @@ export default function ForgotPassword({ navigation, onLoginStatusChange = () =>
                     ) : (
                         <TouchableHighlight
                             style={styles.submitButton}
-                            onPress={handleLogin}
+                            onPress={handleResetPassword}
                         >
                             <Text style={styles.submitText}>Reset Password</Text>
                         </TouchableHighlight>

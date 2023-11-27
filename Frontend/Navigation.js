@@ -11,7 +11,7 @@ import RoomsPage from './pages/workerpage/RoomsPage.js';
 import RoomDetail from './pages/workerpage/RoomDetail.js';
 import ProfilePage from './pages/profilepage/ProfilePage.js';
 import LoginPage from './pages/loginpage/LoginPage.js';
-import ForgotPassword from './PasswordForgot.js';
+import ForgotPassword from './pages/loginpage/PasswordForgot.js';
 
 const Stack = createStackNavigator();
 
