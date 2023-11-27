@@ -13,6 +13,9 @@ const InsertWorker = require("../../database/InsertWorker.js");
 
 const SendWorkerEmail = require("../../functions/SendWorkerEmail.js");
 const GeneratePassword = require('../../functions/GeneratePassword.js');
+const SendForgotPassword = require('../../database/SendForgotPassword.js');
+
+const UpdatePassword = require('../../database/UpdatePassword.js');
 
 router.get("/", async (req, res) => {
 	try {
@@ -58,6 +61,30 @@ router.delete("/", async (req, res) => {
 
 	} catch (error) {
 		res.status(500).json(error);
+	}
+});
+
+router.post("/Forgot", async (req, res) => {
+	try {
+		const {email} = req.body;	
+		
+		const generatedPassword = await GeneratePassword();
+		
+		const UpdatePasswordEmail = await UpdatePassword(email, generatedPassword);
+		const SendForgotPasswordEmail = await SendForgotPassword (email,generatedPassword);
+	
+		res.status(200).json(response);
+
+
+		
+
+	} catch (error) {
+		if(error.message == "This user email doesn't exist."){
+			res.status(404).json(error);
+			return
+		}
+		res.status(500).json(error);
+		
 	}
 });
 
