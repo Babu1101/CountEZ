@@ -1,36 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 import Worker from './components/Worker.js';
 import GetWorkers from './functions/GetWorkers.js';
 
 export default function ViewWorkersPage({ navigation }) {
 	
-	const [workers, setWorkers] = useState([]);
+	const [ loading, setLoading ] = useState(false);
+	const [ workers, setWorkers ] = useState([]);
 
 	useEffect(() => {
     init();
   }, []);
 
   const init = async () => {
+		setLoading(true);
+
     const response = await GetWorkers();
 
     if (response.status == null) {
       
     } else {
-      setWorkers(response.data);
+			const sortedWorkers = response.data.sort((a, b) => (a.isActive < b.isActive) ? 1 : ((a.lastName > b.lastName) ? 1 : -1));
+      setWorkers(sortedWorkers);
     }
-  }
+
+		setLoading(false);
+  };
+
+	const handleDeleteWorker = (userID) => {
+		setLoading(true);
+		
+		const updatedWorkers = workers.filter(worker => worker.userID !== userID);
+    setWorkers(updatedWorkers);
+		
+		setLoading(false);
+	}
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.workersContainer}>
 				<Text style={styles.workersHeader}>All AFSC Student Workers</Text>
-				<ScrollView style={styles.workersScrollContainer}>
-					{workers.map((worker) => {
-						return <Worker key={worker.userID} data={worker} />
-					})}
-				</ScrollView>
+				{ loading 
+				?
+					<ActivityIndicator style={styles.workersScrollContainer} size="large" color="blue" />
+				:
+					<ScrollView 
+						style={styles.workersScrollContainer}
+						contentContainerStyle={styles.scrollContentContainer}
+						showsVerticalScrollIndicator={false}
+					>
+						{workers.map((worker) => {
+							return <Worker key={worker.userID} data={worker} handleDeleteWorker={handleDeleteWorker} />
+						})}
+					</ScrollView>
+				}
 			</View>
 
 			<TouchableOpacity
@@ -49,6 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 	workersContainer: {
+		flex: 1,
     backgroundColor: 'white',
 	},
 	workersHeader: {
@@ -58,13 +83,20 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
   },
 	workersScrollContainer: {
+		flex: 1,
     width: '100%',
   },
+	scrollContentContainer: {
+    paddingBottom: 50,
+  },
 	button: {
+		position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
 		backgroundColor: '#AAC9CE',
-		padding: 10,
-		borderRadius: 5, 
-		marginVertical: 10,
+		padding: 15,
+
 	},
 	buttonText: {
 		color: '#33539E', 
