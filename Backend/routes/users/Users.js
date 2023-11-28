@@ -15,7 +15,7 @@ const CheckWorkerExists = require('../../database/CheckWorkerExists.js');
 
 const SendWorkerEmail = require("../../functions/SendWorkerEmail.js");
 const GeneratePassword = require('../../functions/GeneratePassword.js');
-const SendForgotPassword = require('../../database/SendForgotPassword.js');
+const SendForgotPassword = require('../../functions/SendForgotPassword.js');
 
 const UpdatePassword = require('../../database/UpdatePassword.js');
 const SendDeleteEmail = require("../../functions/SendDeleteEmail.js");
@@ -88,27 +88,23 @@ router.post("/login", async (req, res) => {
 	}
 });
 
-router.post("/Forgot", async (req, res) => {
+router.post("/forgot", async (req, res) => {
 	try {
-		const {email} = req.body;	
+		const { email } = req.body;	
 		
 		const generatedPassword = await GeneratePassword();
 		
-		const UpdatePasswordEmail = await UpdatePassword(email, generatedPassword);
-		const SendForgotPasswordEmail = await SendForgotPassword (email,generatedPassword);
+		await UpdatePassword(email, generatedPassword);
+		await SendForgotPassword (email,generatedPassword);
 	
 		res.status(200).json(response);
-
-
-		
 
 	} catch (error) {
 		if(error.message == "This user email doesn't exist."){
 			res.status(404).json(error);
-			return
+			return;
 		}
 		res.status(500).json(error);
-		
 	}
 });
 
